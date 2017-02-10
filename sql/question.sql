@@ -7,14 +7,14 @@ CREATE TABLE `question` (
   `topic_id` varchar(100) DEFAULT NULL,
   `question_title` varchar(200) DEFAULT NULL,
   `question_text` mediumtext,
-  `follower_count` varchar(10) DEFAULT NULL COMMENT '关注人数',
-  `scan_count` varchar(10) DEFAULT NULL COMMENT '浏览人数',
-  `answer_count` varchar(10) DEFAULT NULL COMMENT '回答数',
+  `follower_count` int(10) DEFAULT NULL COMMENT '关注人数',
+  `scan_count` int(10) DEFAULT NULL COMMENT '浏览人数',
+  `answer_count` int(10) DEFAULT NULL COMMENT '回答数',
   `question_tag` varchar(500) DEFAULT NULL COMMENT '问题标签，以|分隔',
-  `flag` enum('normal','expired','deleted','other') DEFAULT 'normal',
+  `flag` enum('normal','crawled','deleted','other') DEFAULT 'normal',
+  `crawl_count` int(5) DEFAULT '0',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_question_topic_id` (`question_id`, `topic_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
+  UNIQUE KEY `idx_question_topic_id` (`question_id`,`topic_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8869 DEFAULT CHARSET=utf8;

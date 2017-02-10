@@ -15,10 +15,10 @@ CREATE TABLE `answer` (
   `answer_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `voteup_count` int(10) DEFAULT NULL,
   `comment_count` int(10) DEFAULT NULL,
-  `flag` enum('normal','expired','deleted','other') DEFAULT 'normal',
+  `flag` enum('normal','crawled','deleted','other') DEFAULT 'normal',
+  `crawl_count` int(5) DEFAULT '0',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_answer_question_id` (`answer_id`, `question_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
+  UNIQUE KEY `idx_answer_id` (`answer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=935899 DEFAULT CHARSET=utf8;
