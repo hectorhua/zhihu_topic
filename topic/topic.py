@@ -71,17 +71,26 @@ class Topic:
             content = crawler.crawl(url)
             if not content:
                 return
-            self.webpage_save(1, content)
+            file_name = '{}/data/topics/{}/top-answers_page_1.html'.format(os.path.abspath('.'), self.topic_id)
+            self.webpage_save(file_name, content)
             self.extract_question_id(content)
         else:
             for i in range(1, max_page+1):
-                url = page_topic_url.format(self.topic_id, i)
-                content = crawler.crawl(url)
-                if not content:
-                    continue
-                self.webpage_save(i, content)
+                ## 全部回答页面抓取，数量较大，以生活话题为例，有近100000个回答，其中大多数问题，关注人数较少
+                #file_name = '{}/data/topics/{}/page_{}.html'.format(os.path.abspath('.'), self.topic_id, i)
+                ## 精华回答抓取，最多为50个页面，每个页面20个回答，即最多共1000个精华回答，其中所属的问题会有重复
+                file_name = '{}/data/topics/{}/top-answers_page_{}.html'.format(os.path.abspath('.'), self.topic_id, i)
+                if os.path.exists(file_name):
+                    with open(file_name, 'rb') as _r:
+                        content = _r.read()
+                else:
+                    url = page_topic_url.format(self.topic_id, i)
+                    content = crawler.crawl(url)
+                    time.sleep(0.5)
+                    if not content:
+                        continue
+                    self.webpage_save(file_name, content)
                 self.extract_question_id(content)
-                time.sleep(0.5)
     
     def extract_question_id(self, content):
         """ 从topic页面中提取question链接
@@ -89,7 +98,8 @@ class Topic:
         if not content:
             return
         global QUESTION_ID
-        questions = re.findall('link itemprop="url" href="/question/(\d+)', content)
+        #questions = re.findall('link itemprop="url" href="/question/(\d+)', content)
+        questions = re.findall('class="question_link" href="/question/(\d+)', content)
         for q in questions:
             QUESTION_ID.append(q)
         
@@ -107,10 +117,9 @@ class Topic:
             log.error('topic_topic: get_topic_max_page except={}'.format(e))
         return max_page
     
-    def webpage_save(self, i, content):
+    def webpage_save(self, file_name, content):
         """ 网页文件存储
         """
-        file_name = '{}/data/topics/{}/page_{}.html'.format(os.path.abspath('.'), self.topic_id, i)
         with open(file_name, 'wb') as _w:
             _w.write(content)
 

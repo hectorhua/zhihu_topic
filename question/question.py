@@ -65,6 +65,7 @@ class Question:
         #with open('./data/questions/38589246.html', 'rb') as _r:
         #    content = _r.read()
         if not content:
+            log.error('question_crawl_question: content is None')
             return
         self.webpage_save(content)
         return self.parse_question(content)
@@ -78,36 +79,27 @@ class Question:
         """ 解析question页面
         """
         html = etree.HTML(content)
-        question_header = html.xpath('//div[@class="QuestionHeader"]/div[@class="QuestionHeader-content"]')
-        if not question_header:
-            return
-        question_tag = question_header[0].xpath(
-            './div[@class="QuestionHeader-main"]/div[@class="QuestionHeader-topics"]/div/span/a/div/div/text()')
-        _title = question_header[0].xpath('./div[@class="QuestionHeader-main"]/h1/text()')
-        question_title = _title[0] if _title else ''
-        _text = question_header[0].xpath(
-            './div[@class="QuestionHeader-main"]/div[@class="QuestionHeader-detail"]/div/span/text()')
-        question_text = _text[0] if _text else ''
-        '''
-        _follower = question_header[0].xpath(
-            './div[@class="QuestionHeader-side"]/div[@class="QuestionFollowStatus"]/div/button/div[@class="NumberBoard-value"]/text()')
-        follower_count = _follower[0] if _follower else ''
-        _scan = question_header[0].xpath(
-            './div[@class="QuestionHeader-side"]/div[@class="QuestionFollowStatus"]/div/div[@class="NumberBoard-item"]/div[@class="NumberBoard-value"]/text()')
-        scan_count = _scan[0] if _scan else ''
-        '''
-        follower_count = scan_count = ''
-        follow_scan = re.findall('NumberBoard-value">(\d+)', content)
-        if len(follow_scan) == 2:
-            follower_count, scan_count = follow_scan
+
+        question_tag = []
+        question_title  = question_text = follower_count  = ''
+        try:
+            question_tag = [i.strip() for i in html.xpath('//a[@class="zm-item-tag"]/text()')] or []
+            question_title_xpath = html.xpath('//h2[@class="zm-item-title"]/span/text()')
+            question_text_xpath = html.xpath('//div[@class="zm-editable-content"]/text()')
+            follower_count_xpath = html.xpath('//div[@class="zg-gray-normal"]/a/strong/text()')
+            answer_count_xpath = html.xpath('//h3[@id="zh-question-answer-num"]/text()')
+            question_title = question_title_xpath[0] if question_title_xpath else ''
+            question_text = question_text_xpath[0] if question_text_xpath else ''
+            follower_count = follower_count_xpath[0] if follower_count_xpath else 0
+            _answer_count = answer_count_xpath[0] if answer_count_xpath else ''
+        except Exception, e:
+            log.error('question_parse_question: question_url={} except={}'.format(self.question_url, str(e)))
+        if re.search('(\d+)', _answer_count):
+            answer_count = re.search('(\d+)', _answer_count).group(1)
         else:
-            log.info('question_parse_question: len(follow_scan) != 2')
-        _answer = html.xpath('//div[@class="List-header"]/h4/span/text()')
-        _answer_count = _answer[0] if _answer else ''
-        if _answer_count:
-            answer_count = re.search('(\d+)', _answer_count).group(1) if re.search('(\d+)', _answer_count) else '0'
-        else:
-            answer_count = '0'
+            answer_count = 0
+        scan_count = 0
+        
         '''
         print question_tag
         print question_title
@@ -137,7 +129,10 @@ class Question:
 def main():
     """ 主函数
     """
-
+    file_name = '/Users/zhonghualiu/code/git/zhihu_topic/data/questions/54471696.html'
+    with open(file_name, 'rb') as _r:
+        content = _r.read()
+    Question.from_question('00', '11').parse_question(content)
 
 if __name__ == '__main__':
     main()
