@@ -2,7 +2,7 @@
 *.log
 *.log*
 .idea/*
-log/*
-data/questions/*
-data/topics/*
+*.html
+*.bak
+page_*
 .DS_Store
