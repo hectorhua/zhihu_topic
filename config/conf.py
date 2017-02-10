@@ -11,14 +11,14 @@ sys.setdefaultencoding('utf-8')
 """
 
 ## logpath
-LOGPATH = '/Users/zhonghualiu/code/git/zhihu_topic/log/zhihu_topic.log'
+LOGPATH = '/Users/xxxx/code/git/zhihu_topic/log/zhihu_topic.log'
 
 ## mysql
 SETTINGS = {
     'MYSQL_HOST'   : 'localhost',
     'MYSQL_PORT'   : 3306,
-    'MYSQL_USER'   : 'hua',
-    'MYSQL_PASSWD' : '19890910',
+    'MYSQL_USER'   : 'xxxx',
+    'MYSQL_PASSWD' : 'xxxx',
     'MYSQL_DB'     : 'zhihu_topic',
     'MYSQL_CHARSET': 'utf8',
 }
