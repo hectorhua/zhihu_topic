@@ -3,7 +3,6 @@
 *.log*
 .idea/*
 log/*
-config/*
 data/questions/*
 data/topics/*
 .DS_Store

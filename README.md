@@ -13,11 +13,19 @@ mac
 ## cookie
 解密chrome cookie文件
 
-## 示例
-### 话题：搞笑
-id   topic_id    topic_name    topic_url                                follower_count  
-1    19610713    搞笑          https://www.zhihu.com/topic/19610713/    120722
-### 问题：7428
-### 回答：135233
-### 时间：6h
+## 结果
+### topic
+![save-to-screen][1]
 
+### question
+![save-to-screen][2]
+
+### answer
+![save-to-screen][3]
+
+### 建议
+知乎有封禁策略，建议使用小号抓取
+
+[1]: http://game.ofchao.bid/sanhei/rm.pic/save-to-screen.min.jpg
+[2]: http://game.ofchao.bid/sanhei/rm.pic/save-to-screen.min.jpg
+[3]: http://game.ofchao.bid/sanhei/rm.pic/save-to-screen.min.jpg
