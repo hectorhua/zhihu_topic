@@ -5,7 +5,7 @@
 MySQL: topic question answer
 
 ## 数据抓取
-requwsts xpath re
+requwsts/xpath/re
 
 ## 配置
 mac 
@@ -26,6 +26,6 @@ mac
 ### 建议
 知乎有封禁策略，建议使用小号抓取
 
-[1]: http://game.ofchao.bid/sanhei/rm.pic/save-to-screen.min.jpg
-[2]: http://game.ofchao.bid/sanhei/rm.pic/save-to-screen.min.jpg
-[3]: http://game.ofchao.bid/sanhei/rm.pic/save-to-screen.min.jpg
+[1]: https://raw.githubusercontent.com/hectorhua/zhihu_topic/master/pic/topic.png
+[2]: https://raw.githubusercontent.com/hectorhua/zhihu_topic/master/pic/question.png
+[3]: https://raw.githubusercontent.com/hectorhua/zhihu_topic/master/pic/answer.png
