@@ -14,21 +14,20 @@ mac
 解密chrome cookie文件
 
 ## 变更
-知乎答案获取接口发生变化，之前是随意访问的get：
-https://www.zhihu.com/api/v4/questions/{}/answers?sort_by=default&include={}&limit=20&offset={}
-现在变成了post：
-https://www.zhihu.com/node/QuestionAnswerListV2
-Form Data：
-method:next
-params:{"url_token":36535039,"pagesize":10,"offset":30}
-接口返回数据格式由原来的json数据变成了html
-需要进一步xpath解析
-几个topic数据已在变化全部抓下来了，后面会放到百度云上。
+知乎答案获取接口发生变化，之前是随意访问的get:<br>
+https://www.zhihu.com/api/v4/questions/{}/answers?sort_by=default&include={}&limit=20&offset={}<br>
+现在变成了post：<br>
+https://www.zhihu.com/node/QuestionAnswerListV2<br>
+Form Data:<br>
+method:next<br>
+params:{"url_token":36535039,"pagesize":10,"offset":30}<br>
+接口返回数据格式由原来的json数据变成了html,需要进一步xpath解析.<br>
+几个topic数据已在变化全部抓下来了,后面会放到百度云上.
 
 ## 抓取结果
-topic记录：30
-question记录：8868
-answer记录：3145338
+topic记录: 30
+question记录: 8868
+answer记录: 3145338
 链接: https://pan.baidu.com/s/1slW6cSt 密码: 5fs4
 
 ## 建议
