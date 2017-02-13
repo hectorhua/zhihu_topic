@@ -26,6 +26,18 @@ mac
 ### 建议
 知乎有封禁策略，建议使用小号抓取
 
+### 变更
+知乎答案获取接口发生变化，之前是随意访问的get：
+https://www.zhihu.com/api/v4/questions/{}/answers?sort_by=default&include={}&limit=20&offset={}
+现在变成了post：
+https://www.zhihu.com/node/QuestionAnswerListV2
+Form Data：
+method:next
+params:{"url_token":36535039,"pagesize":10,"offset":30}
+接口返回数据格式由原来的json数据变成了html
+需要进一步xpath解析
+几个topic数据已在变化全部抓下来了，后面会放到百度云上。
+
 [1]: https://raw.githubusercontent.com/hectorhua/zhihu_topic/master/pic/topic.png
 [2]: https://raw.githubusercontent.com/hectorhua/zhihu_topic/master/pic/question.png
 [3]: https://raw.githubusercontent.com/hectorhua/zhihu_topic/master/pic/answer.png
