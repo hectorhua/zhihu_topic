@@ -38,6 +38,12 @@ params:{"url_token":36535039,"pagesize":10,"offset":30}
 需要进一步xpath解析
 几个topic数据已在变化全部抓下来了，后面会放到百度云上。
 
+### 抓取结果
+topic记录：30
+question记录：8868
+answer记录：3145338
+链接: https://pan.baidu.com/s/1slW6cSt 密码: 5fs4
+
 [1]: https://raw.githubusercontent.com/hectorhua/zhihu_topic/master/pic/topic.png
 [2]: https://raw.githubusercontent.com/hectorhua/zhihu_topic/master/pic/question.png
 [3]: https://raw.githubusercontent.com/hectorhua/zhihu_topic/master/pic/answer.png
