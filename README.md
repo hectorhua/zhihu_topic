@@ -21,6 +21,7 @@ https://www.zhihu.com/node/QuestionAnswerListV2<br>
 Form Data:<br>
 - method:next<br>
 - params:{"url_token":36535039,"pagesize":10,"offset":30}<br>
+
 接口返回数据格式由原来的json数据变成了html,需要进一步xpath解析.<br>
 几个topic数据已在变化全部抓下来了,后面会放到百度云上.
 
