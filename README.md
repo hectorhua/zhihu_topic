@@ -35,13 +35,13 @@ answer记录: 3145338<br>
 知乎有封禁策略，建议使用小号抓取
 
 ## 示例
-### topic
+topic
 ![save-to-screen][1]
 
-### question
+question
 ![save-to-screen][2]
 
-### answer
+answer
 ![save-to-screen][3]
 
 [1]: https://raw.githubusercontent.com/hectorhua/zhihu_topic/master/pic/topic.png
